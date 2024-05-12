@@ -1,27 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:minimalist_state_management/service_locator.dart';
+
+import 'counter_state.dart';
 
 class CounterText extends StatelessWidget {
-  const CounterText({
-    super.key,
-    required ValueNotifier<int> counter,
-  }) : _counter = counter;
+   CounterText({
+    Key? key,
+  }) : super(key: key);
 
-  final ValueNotifier<int> _counter;
+// final ValueNotifier<int> _counter;
 
   @override
   Widget build(BuildContext context) {
+    final state = getIt.get<CounterState>();
+
     return ValueListenableBuilder<int>(
-      //the code below listens _counter value, if it changes the state will be updated
-        valueListenable: _counter,
+      //The code below listens _counter value, if it changes the state will be updated
+       // valueListenable: _counter,
+      valueListenable: state.counter,
         builder: (context,counterValue,_) {
           /*
-          this area can be used to handle various lightweight operations
+          This area can be used to handle various lightweight operations
           but not the operations such backend request, async operations, filtering
           Because it can effect app performance dramatically.
            */
+          Color textColor = counterValue >= 0 ? Colors.green : Colors.red;
+
           return Text(
             '$counterValue',
-            style: Theme.of(context).textTheme.headlineMedium,
+            style: Theme.of(context).textTheme.headlineMedium?.copyWith(color:textColor),
           );
         }
     );

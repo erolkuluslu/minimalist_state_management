@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:minimalist_state_management/counter_state.dart';
+import 'package:minimalist_state_management/service_locator.dart';
 
 import 'counter_text.dart';
 /*
@@ -12,6 +14,7 @@ The code must observe the changes by itself we should not give the order to rebu
  */
 
 void main() {
+  initGetIt();
   runApp(const MyApp());
 }
 
@@ -40,22 +43,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  //int _counter = 0;
-   ValueNotifier<int> _counter = ValueNotifier<int>(0);
-
-  void _incrementCounter() {
-      _counter.value++;
-      print(_counter.value);
-  }
-   void _decrementCounter() {
-     _counter.value--;
-     print(_counter.value);
-   }
-   void _resetCounter() {
-     _counter.value=0;
-     print(_counter.value);
-   }
-
+  final state = getIt.get<CounterState>();
+  //CounterState state = CounterState();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,16 +62,16 @@ class _MyHomePageState extends State<MyHomePage> {
             const Text(
               'You have pushed the button this many times:',
             ),
-            CounterText(counter: _counter),
+            CounterText(),
             const SizedBox(height: 50,),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-              ElevatedButton(onPressed: _incrementCounter, child: const Icon(Icons.add)),
+              ElevatedButton(onPressed: state.incrementCounter, child: const Icon(Icons.add)),
               const SizedBox(width: 10,),
-              ElevatedButton(onPressed: _decrementCounter, child: const Icon(Icons.remove)),
+              ElevatedButton(onPressed: state.decrementCounter, child: const Icon(Icons.remove)),
             ],),
-            ElevatedButton(onPressed: _resetCounter, child: const Icon(Icons.refresh)),
+            ElevatedButton(onPressed: state.resetCounter, child: const Icon(Icons.refresh)),
 
 
           ],
