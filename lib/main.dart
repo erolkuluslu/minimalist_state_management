@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:minimalist_state_management/appbar_icon.dart';
 import 'package:minimalist_state_management/counter_state.dart';
+import 'package:minimalist_state_management/list_view_container.dart';
+import 'package:minimalist_state_management/list_view_state.dart';
+import 'package:minimalist_state_management/post.dart';
 import 'package:minimalist_state_management/service_locator.dart';
 
 import 'counter_text.dart';
@@ -45,6 +48,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  Post postToAdd =  Post(
+    userId: 1,
+    id: 10,
+    title: "Kara Kartal",
+    body: "si no estas",
+  );
   final state = getIt.get<CounterState>();
   //CounterState state = CounterState();
 
@@ -96,6 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -126,9 +136,17 @@ class _MyHomePageState extends State<MyHomePage> {
             ],),
             ElevatedButton(onPressed: state.resetCounter, child: const Icon(Icons.refresh)),
 
+            SizedBox(
+              height: MediaQuery.of(context).size.height*0.6,
+                child:  ListViewContainer()),
+
 
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(onPressed: () { getIt.get<ListViewState>().postAddTapped(postToAdd); },
+        child: const Icon(Icons.add),
+
       ),
     );
   }
