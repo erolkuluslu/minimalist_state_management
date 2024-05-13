@@ -47,6 +47,53 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final state = getIt.get<CounterState>();
   //CounterState state = CounterState();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    state.counter.addListener(() {
+      if(state.counter.value==10){
+        _showMyDialog();
+
+      }
+
+    });
+  }
+  Future<void> _showMyDialog() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Warning'),
+          content: const SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text('You have reached 10. If you want to continue please press continue.'),
+                Text('Would you like to continue ?'),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Continue'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: const Text('Reset'),
+              onPressed: () {
+                Navigator.of(context).pop();
+                state.resetCounter();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

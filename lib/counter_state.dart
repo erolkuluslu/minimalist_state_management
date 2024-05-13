@@ -1,19 +1,22 @@
 import 'package:flutter/cupertino.dart';
 
 class CounterState{
-  ValueNotifier<int> counter = ValueNotifier<int>(0);
+  final ValueNotifier<int> _counter = ValueNotifier<int>(0);
+
+  ValueNotifier<int> get counter => _counter;
 
   void incrementCounter() {
-    counter.value++;
-    print(counter.value);
-  }
-  void decrementCounter() {
-    counter.value--;
-    print(counter.value);
-  }
-  void resetCounter() {
-    counter.value=0;
-    print(counter.value);
+    _counter.value++;
+    print(_counter.value);
   }
 
+  void decrementCounter() {
+    _counter.value--;
+    print(_counter.value);
+  }
+
+  void resetCounter() {
+    _counter.value = 0;
+    print(_counter.value);
+  }
 }
