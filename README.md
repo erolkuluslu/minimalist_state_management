@@ -1,16 +1,45 @@
-# minimalist_state_management
+# Minimalist State Management
 
-A new Flutter project.
+This repository demonstrates an efficient implementation of state management in Flutter using a service locator pattern with `getIt`. The primary goal is to achieve reactive code without resorting to imperative approaches like `setState`. The code is designed to observe changes only in the needed areas, eliminating the need to rebuilding unneccessary areas..
+
+## How to Use
+
+1. **Setup `getIt`:** Initialize the service locator `getIt` in the `main` function by calling `initGetIt()`.
+2. **Widgets:**
+   - `MyHomePage`: Represents the main page of the app. It utilizes `CounterState` and `ListViewState` for managing state.
+   - `CounterText`: Widget responsible for displaying the current counter value.
+   - `ListViewContainer`: Widget for displaying a list of posts with add and remove functionality.
+3. **State Management:**
+   - `CounterState`: Manages the counter state with methods for incrementing, decrementing, and resetting the counter.
+   - `ListViewState`: Manages the list of posts with methods for adding and removing posts.
+   - Both `CounterState` and `ListViewState` utilize `ValueNotifier` to notify listeners of state changes.
+4. **UI Components:**
+   - `AlertDialog`: Displays a warning when the counter reaches 10, prompting the user to continue or reset.
+   - `AppBar`: Customized app bar with an icon.
+   - `FloatingActionButton`: Allows adding new posts to the list.
+
+## Key Features
+
+- **Reactive Code:** Utilizes `ValueNotifier` and `ValueListenableBuilder` to achieve reactive behavior without relying on `setState`.
+- **Service Locator Pattern:** Uses `getIt` for efficient and centralized dependency management.
+- **Separation of Concerns:** State management logic is separated from UI components for better code organization and maintainability.
+
+## Dependencies
+
+- `flutter/material.dart`: Flutter framework for building UI.
+- `get_it`: Package for implementing the service locator pattern.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+1. Clone the repository.
+2. Ensure Flutter SDK is installed and up-to-date.
+3. Run `flutter pub get` to install dependencies.
+4. Run the app on your preferred device or emulator.
 
-A few resources to get you started if this is your first Flutter project:
+## Contributing
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Contributions are welcome! If you have suggestions for improvements or new features, feel free to open an issue or submit a pull request.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
