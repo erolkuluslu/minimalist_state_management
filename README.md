@@ -5,7 +5,7 @@ This repository demonstrates an efficient implementation of state management in 
 
 ## Acknowledgements
 
-Special thanks to [Ozkan Kaya](https://github.com/ozkayas) for providing the insightful tutorial and code implementation on efficient state management using service locator in Flutter. This project drew inspiration and learning from their work.
+Special thanks to [Ozkan Kaya](https://github.com/ozkayas) for providing the insightful tutorial and code implementation on efficient state management using service locator in Flutter. This project drew inspiration and learning from his work.
 
 
 ## How to Use
