@@ -22,7 +22,7 @@ class ListViewContainer extends StatelessWidget {
                     subtitle: Text(post.body),
                     trailing: IconButton(
                         onPressed: () {
-                          state.postRemoveTapped(post);
+                          state.postsNotifier.postRemoveTapped(post);
                         },
                         icon: const Icon(Icons.remove_circle_outline)),
                   ))

@@ -49,8 +49,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   Post postToAdd =  Post(
-    userId: 1,
-    id: 10,
+    userId: 99,
+    id: 99,
     title: "Kara Kartal",
     body: "si no estas",
   );
@@ -144,7 +144,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(onPressed: () { getIt.get<ListViewState>().postAddTapped(postToAdd); },
+      floatingActionButton: FloatingActionButton(onPressed: () { getIt.get<ListViewState>().postsNotifier.postAddTapped(postToAdd); },
         child: const Icon(Icons.add),
 
       ),
