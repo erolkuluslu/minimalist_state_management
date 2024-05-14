@@ -1,6 +1,12 @@
 # Minimalist State Management
 
+
 This repository demonstrates an efficient implementation of state management in Flutter using a service locator pattern with `getIt`. The primary goal is to achieve reactive code without resorting to imperative approaches like `setState`. The code is designed to observe changes only in the needed areas, eliminating the need to rebuilding unneccessary areas..
+
+## Acknowledgements
+
+Special thanks to [Ozkan Kaya](https://github.com/ozkayas) for providing the insightful tutorial and code implementation on efficient state management using service locator in Flutter. This project drew inspiration and learning from their work.
+
 
 ## How to Use
 
